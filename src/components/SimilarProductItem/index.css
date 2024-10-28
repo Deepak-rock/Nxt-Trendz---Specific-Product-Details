@@ -1,1 +1,28 @@
 /* Write your CSS here */
+.similar-product-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0;
+}
+.product-item-img {
+    border-radius: 15px;
+    width:250px;
+}
+.title-similar-product {
+    font-size: 20px;
+    font-family: 'roboto';
+    font-weight: bold;
+    color: #1e293b;
+}
+.price-rating-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+@media screen and (min-width: 768px) {
+    .product-item-img {
+        width: 250px;
+    }
+}
