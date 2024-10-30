@@ -31,7 +31,10 @@ class ProductItemDetails extends Component {
   }
 
   decrementCount = () => {
-    this.setState(prevState => ({quantity: prevState.quantity - 1}))
+    const {quantity} = this.state
+    if (quantity > 1) {
+      this.setState(prevState => ({quantity: prevState.quantity - 1}))
+    }
   }
 
   getProductItemDetails = async () => {
@@ -100,7 +103,7 @@ class ProductItemDetails extends Component {
     <div className="product-not-found-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-error-view-img.png"
-        alt="error"
+        alt="failure view"
         className="product-not-found-img"
       />
       <h1 className="product-not-found">Product Not Found</h1>
@@ -121,14 +124,12 @@ class ProductItemDetails extends Component {
         <div className="product-item-view">
           <img
             src={productItemDetailsList.imageURL}
-            alt={productItemDetailsList.id}
+            alt="product"
             className="product-img"
           />
           <div className="product-details-container">
             <h3 className="product-title">{productItemDetailsList.title}</h3>
-            <h3 className="product-price">
-              Rs {productItemDetailsList.price}/-
-            </h3>
+            <p className="product-price">Rs {productItemDetailsList.price}/-</p>
             <div className="rating-review-container">
               <div className="rating-container">
                 <p className="rating">{productItemDetailsList.rating}</p>
@@ -145,23 +146,37 @@ class ProductItemDetails extends Component {
             <p className="product-description">
               {productItemDetailsList.description}
             </p>
-            <p className="product-avaliable">
-              Available:{' '}
-              <span className="product-span-avaliable">
+            <div className="avaliable-container">
+              <p className="product-avaliable">Available: </p>
+              <p className="product-span-avaliable">
                 {productItemDetailsList.availability}
-              </span>
-            </p>
-            <p className="product-brand">
-              Brand:{' '}
-              <span className="product-span-brand">
+              </p>
+            </div>
+            <div className="brand-container">
+              <p className="product-brand">Brand: </p>
+              <p className="product-span-brand">
                 {productItemDetailsList.brand}
-              </span>
-            </p>
+              </p>
+            </div>
             <hr className="horizontal-line" />
             <div className="quantity-container">
-              <BsPlusSquare className="icon" onClick={this.incrementCount} />
+              <button
+                type="button"
+                className="quantity-btn"
+                onClick={this.incrementCount}
+                data-testid="plus"
+              >
+                <BsPlusSquare className="icon" />
+              </button>
               <p className="quantity">{quantity}</p>
-              <BsDashSquare className="icon" onClick={this.decrementCount} />
+              <button
+                type="button"
+                className="quantity-btn"
+                onClick={this.decrementCount}
+                data-testid="minus"
+              >
+                <BsDashSquare className="icon" />
+              </button>
             </div>
             <button className="add-to-card-btn" type="button">
               ADD TO CART

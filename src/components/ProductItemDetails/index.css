@@ -45,6 +45,12 @@
   font-family: 'roboto';
   color: #616e7c;
 }
+.brand-container,
+.avaliable-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .product-avaliable,
 .product-brand {
   font-size: 14px;
@@ -68,8 +74,13 @@
   gap: 30px;
   padding: 0 5px 10px 5px;
 }
-.icon {
+.quantity-btn {
+  border: none;
+  outline: none;
   cursor: pointer;
+  background-color: transparent;
+}
+.icon {
   font-size: 18px;
   color: #616e7c;
 }
